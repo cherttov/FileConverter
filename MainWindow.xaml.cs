@@ -32,7 +32,7 @@ namespace type_converter
                 // Check if more than 1 file has been selected
                 if (_files.Length > 1)
                 {
-                    Debug.WriteLine("ERROR: MainWindow.xaml.cs : Line 33"); // Debug
+                    Debug.WriteLine("ERROR: MainWindow.xaml.cs : Line 33\n  > More than 1 file selected"); // Debug
                 }
                 else
                 {

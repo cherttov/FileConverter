@@ -18,3 +18,4 @@ C:\Users\Tymofii Chertov\Nevim\Programming\csharp\type_converter\obj\Debug\net9.
 C:\Users\Tymofii Chertov\Nevim\Programming\csharp\type_converter\obj\Debug\net9.0-windows\type_converter.pdb
 C:\Users\Tymofii Chertov\Nevim\Programming\csharp\type_converter\obj\Debug\net9.0-windows\type_converter.genruntimeconfig.cache
 C:\Users\Tymofii Chertov\Nevim\Programming\csharp\type_converter\obj\Debug\net9.0-windows\ref\type_converter.dll
+C:\Users\Tymofii Chertov\Nevim\Programming\csharp\type_converter\obj\Debug\net9.0-windows\type_converter.sourcelink.json
