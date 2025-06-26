@@ -372,7 +372,7 @@
             <!-- Convert Button -->
             <Button x:Name="ConvertButton"
                     Style="{DynamicResource RoundedButton}" Margin="2 0 0 0" Grid.Column="1" Content="CONVERT" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
-                    Background="#FF2A2A40" Foreground="#FFCDD6F4" FontSize="18" FontFamily="Cascadia Mono" BorderThickness="2,2,2,2">
+                    Background="#FF2A2A40" Foreground="#FFCDD6F4" FontSize="18" FontFamily="Cascadia Mono" BorderThickness="2,2,2,2" Click="ConvertButton_Click">
                 <Button.BorderBrush>
                     <SolidColorBrush Color="#4CBAC2DE" Opacity="1"/>
                 </Button.BorderBrush>

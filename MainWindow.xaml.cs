@@ -10,20 +10,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using type_converter.src;
 using Path = System.IO.Path;
 
 namespace type_converter
 {
     public partial class MainWindow : Window
     {
+        private string? inputFilePath;
+
         public MainWindow()
         {
             InitializeComponent();
-
-            ConversionSelector.GetAllowedConversions(ImageFormat.PNG); // Placeholder
         }
 
-        // Drag & Drop Area
+        // Drag & Drop area
         private void DragDropArea_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -36,10 +37,54 @@ namespace type_converter
                 }
                 else
                 {
+                    string _filePath = _files[0];
                     string _fileName = Path.GetFileName(_files[0]);
-                    Debug.WriteLine(_fileName); // Debug
+                    string _fileType = Path.GetExtension(_files[0]).ToLower();
+
+                    ImageFormat _format = _fileType switch
+                    {
+                        // Image
+                        ".png" => ImageFormat.PNG,
+                        ".jpg" or ".jpeg" => ImageFormat.JPG,
+                        ".webp" => ImageFormat.WEBP,
+                        // Document
+                        ".pdf" => ImageFormat.PDF,
+                        ".docx" => ImageFormat.DOCX,
+                        _ => ImageFormat.Unknown
+                    };
+
+                    if (_format != ImageFormat.Unknown )
+                    {
+                        List<ImageFormat> _availableConversions = ConversionSelector.GetAllowedConversions(_format);
+                        ConvertToComboBox.Items.Clear();
+                        foreach (ImageFormat _row in _availableConversions)
+                        {
+                            ConvertToComboBox.Items.Add(_row);
+                        }
+                        inputFilePath = _filePath;
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Unknown file type"); //  Debug
+                    }
                 }
             }
+        }
+
+        // Convert button
+        private void ConvertButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (inputFilePath == null || ConvertToComboBox.SelectedItem == null)
+            {
+                Debug.WriteLine("File or selection is null"); // Debug
+                return;
+            }
+
+            ImageFormat _targetFormat = (ImageFormat)ConvertToComboBox.SelectedItem;
+
+            string _outputFilePath = System.IO.Path.ChangeExtension(inputFilePath, _targetFormat.ToString().ToLower());
+
+            FFmpeg.Convert(inputFilePath, _outputFilePath);
         }
     }
 }

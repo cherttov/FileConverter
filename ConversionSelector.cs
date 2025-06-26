@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace type_converter
 {
+    // List of formats
     public enum ImageFormat
     {
         Unknown, // Default 
-        // Picture
+        // Image
         PNG,
         JPG,
         WEBP,
-        // Audio
-        MP3,
-        WAV
+        // Document
+        PDF,
+        DOCX
     }
 
     // Creates conversion table
@@ -35,8 +36,8 @@ namespace type_converter
                 { ImageFormat.JPG, new  List<ImageFormat>{ImageFormat.PNG, ImageFormat.WEBP} },
                 { ImageFormat.WEBP, new  List<ImageFormat>{ImageFormat.JPG, ImageFormat.PNG} },
                 // Audio
-                { ImageFormat.MP3, new  List<ImageFormat>{ImageFormat.WAV} },
-                { ImageFormat.WAV, new  List<ImageFormat>{ImageFormat.MP3} }
+                { ImageFormat.PDF, new  List<ImageFormat>{ImageFormat.DOCX} },
+                { ImageFormat.DOCX, new  List<ImageFormat>{ImageFormat.PDF} }
             };
         }
         
@@ -46,7 +47,6 @@ namespace type_converter
             // PNG: ConversionMap.GetValues for PNG -> Output available values
             if (ConversionMap.TryGetValue(_sourceFormat, out var _convertibleFormats))
             {
-                Debug.WriteLine($"{_sourceFormat}: {string.Join(", ", _convertibleFormats)}"); // Debug
                 return _convertibleFormats;
             }
 
