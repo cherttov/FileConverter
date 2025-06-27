@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{323340C0-6DD0-4852-91ED-79491FA4441D}|type_converter.csproj|c:\\users\\tymofii chertov\\nevim\\programming\\csharp\\type_converter\\src\\ffmpeg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{323340C0-6DD0-4852-91ED-79491FA4441D}|type_converter.csproj|solutionrelative:src\\ffmpeg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{323340C0-6DD0-4852-91ED-79491FA4441D}|type_converter.csproj|c:\\users\\tymofii chertov\\nevim\\programming\\csharp\\type_converter\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{323340C0-6DD0-4852-91ED-79491FA4441D}|type_converter.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{323340C0-6DD0-4852-91ED-79491FA4441D}|type_converter.csproj|c:\\users\\tymofii chertov\\nevim\\programming\\csharp\\type_converter\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{323340C0-6DD0-4852-91ED-79491FA4441D}|type_converter.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,36 +18,35 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAACEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T17:59:10.699Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FFmpeg.cs",
-              "DocumentMoniker": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\src\\FFmpeg.cs",
-              "RelativeDocumentMoniker": "src\\FFmpeg.cs",
-              "ToolTip": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\src\\FFmpeg.cs",
-              "RelativeToolTip": "src\\FFmpeg.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T10:29:51.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\MainWindow.xaml.cs",
-              "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAqwEUAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T17:29:43.97Z",
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-27T17:38:11.58Z",
               "EditorCaption": ""
             }
           ]

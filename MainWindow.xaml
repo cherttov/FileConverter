@@ -10,6 +10,17 @@
     
     <!-- ComboBox & Button Style -->
     <Window.Resources>
+        <!-- Border Style -->
+        <Style x:Key="DragDropBorderStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#4CBAC2DE"/>
+            <Setter Property="Background" Value="#FF2A2A40"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#99BAC2DE"/>
+                    <Setter Property="Background" Value="#FF33334C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <!-- Button Style -->
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -351,9 +362,10 @@
 
         <!-- DragDrop Area -->
         <Border x:Name="DragDropArea"
-                Margin="8 8 8 6" CornerRadius="10" BorderThickness="2" Background="#FF2A2A40" BorderBrush="#4CBAC2DE" 
+                Margin="8 8 8 6" CornerRadius="10" BorderThickness="2"
                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AllowDrop="True"
-                Drop="DragDropArea_Drop">
+                Drop="DragDropArea_Drop" Style="{StaticResource DragDropBorderStyle}"
+                DragEnter="DragDropArea_DragEnter" DragLeave="DragDropArea_DragLeave">
             <TextBlock Text="Drop your file here..." VerticalAlignment="Center" HorizontalAlignment="Center" 
                        FontSize="20" FontFamily="Cascadia Mono" Foreground="#FFCDD6F4"/>
         </Border>

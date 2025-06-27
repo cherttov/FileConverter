@@ -12,7 +12,7 @@ namespace type_converter.src
     {
         public static bool Convert(string _inputPath, string _outputPath)
         {
-            string ffmpegExecutablePath = Path.GetFullPath(@"..\..\..\src\ffmpeg.exe");
+            string ffmpegExecutablePath = Path.GetFullPath(@"..\..\..\ffmpeg\ffmpeg.exe");
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo

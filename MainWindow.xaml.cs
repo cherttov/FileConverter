@@ -17,6 +17,11 @@ namespace type_converter
 {
     public partial class MainWindow : Window
     {
+        // Drag & Drop area style variables
+        private readonly SolidColorBrush dragDropBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99BAC2DE"));
+        private readonly SolidColorBrush dragDropBackground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF33334C"));
+
+        // File path in which original file is in
         private string? inputFilePath;
 
         public MainWindow()
@@ -86,5 +91,25 @@ namespace type_converter
 
             FFmpeg.Convert(inputFilePath, _outputFilePath);
         }
+
+
+        // Drag & Drop area styles
+        private void DragDropArea_DragEnter(object sender, DragEventArgs e)
+        {
+            if (sender is Border border)
+            {
+                border.BorderBrush = dragDropBrush;
+                border.Background = dragDropBackground;
+            }
+        }
+        private void DragDropArea_DragLeave(object sender, DragEventArgs e)
+        {
+            if (sender is Border border)
+            {
+                border.ClearValue(Border.BorderBrushProperty);
+                border.ClearValue(Border.BackgroundProperty);
+            }
+        }
+
     }
 }
