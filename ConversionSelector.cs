@@ -15,9 +15,9 @@ namespace type_converter
         PNG,
         JPG,
         WEBP,
+        ICO
         // Document
-        PDF,
-        DOCX
+        // Tables
     }
 
     // Creates conversion table
@@ -32,12 +32,12 @@ namespace type_converter
             ConversionMap = new Dictionary<ImageFormat, List<ImageFormat>>
             {
                 // Picture
-                { ImageFormat.PNG, new  List<ImageFormat>{ImageFormat.JPG, ImageFormat.WEBP} },
-                { ImageFormat.JPG, new  List<ImageFormat>{ImageFormat.PNG, ImageFormat.WEBP} },
-                { ImageFormat.WEBP, new  List<ImageFormat>{ImageFormat.JPG, ImageFormat.PNG} },
-                // Audio
-                { ImageFormat.PDF, new  List<ImageFormat>{ImageFormat.DOCX} },
-                { ImageFormat.DOCX, new  List<ImageFormat>{ImageFormat.PDF} }
+                { ImageFormat.PNG, new  List<ImageFormat>{ImageFormat.JPG, ImageFormat.WEBP, ImageFormat.ICO} },
+                { ImageFormat.JPG, new  List<ImageFormat>{ImageFormat.PNG, ImageFormat.WEBP, ImageFormat.ICO } },
+                { ImageFormat.WEBP, new  List<ImageFormat>{ImageFormat.JPG, ImageFormat.PNG, ImageFormat.ICO } },
+                { ImageFormat.ICO, new  List<ImageFormat>{ImageFormat.PNG, ImageFormat.JPG, ImageFormat.WEBP} },
+                // Document
+                // Tables
             };
         }
         
@@ -62,9 +62,9 @@ namespace type_converter
                 ".png" => ImageFormat.PNG,
                 ".jpg" or ".jpeg" => ImageFormat.JPG,
                 ".webp" => ImageFormat.WEBP,
+                ".ico" => ImageFormat.ICO,
                 // Document
-                ".pdf" => ImageFormat.PDF,
-                ".docx" => ImageFormat.DOCX,
+                // Tables
                 _ => ImageFormat.Unknown
             };
         }
