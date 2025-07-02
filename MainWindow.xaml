@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:type_converter"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="500" Background="#FF1E1E2E" Foreground="#FF1E1E2E"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" WindowStartupLocation="CenterScreen" MinWidth="340" MinHeight="170">
     
     <!-- ComboBox & Button Style -->
     <Window.Resources>
@@ -365,7 +365,7 @@
         <Border x:Name="DragDropArea"
                 Margin="8 8 8 6" CornerRadius="10" BorderThickness="2"
                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AllowDrop="True"
-                Drop="DragDropArea_Drop" Style="{StaticResource DragDropBorderStyle}"
+                Drop="DragDropArea_Drop" Style="{StaticResource DragDropBorderStyle}" MouseLeftButtonDown="DragDropArea_MouseDown"
                 DragEnter="DragDropArea_DragEnter" DragLeave="DragDropArea_DragLeave">
             <TextBlock Text="Drop your file here..." VerticalAlignment="Center" HorizontalAlignment="Center" 
                        FontSize="20" FontFamily="Cascadia Mono" Foreground="#FFCDD6F4"/>

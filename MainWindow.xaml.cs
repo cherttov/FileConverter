@@ -1,8 +1,10 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -29,50 +31,45 @@ namespace type_converter
             InitializeComponent();
         }
 
-        // Drag & Drop area
+        // Drag & Drop area dropped
         private void DragDropArea_Drop(object sender, DragEventArgs e)
         {
+            inputFilePath = null; // Reset input file path
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] _files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 // Check if more than 1 file has been selected
                 if (_files.Length > 1)
                 {
-                    Debug.WriteLine("ERROR: MainWindow.xaml.cs : Line 33\n  > More than 1 file selected"); // Debug
+                    // Debug.WriteLine("ERROR: MainWindow.xaml.cs : Line 43\n  > More than 1 file selected"); // Debug
+                    MessageBox.Show("Select only 1 file to convert.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    string _filePath = _files[0];
-                    string _fileName = Path.GetFileName(_files[0]);
-                    string _fileType = Path.GetExtension(_files[0]).ToLower();
-
-                    ImageFormat _format = _fileType switch
-                    {
-                        // Image
-                        ".png" => ImageFormat.PNG,
-                        ".jpg" or ".jpeg" => ImageFormat.JPG,
-                        ".webp" => ImageFormat.WEBP,
-                        // Document
-                        ".pdf" => ImageFormat.PDF,
-                        ".docx" => ImageFormat.DOCX,
-                        _ => ImageFormat.Unknown
-                    };
-
-                    if (_format != ImageFormat.Unknown )
-                    {
-                        List<ImageFormat> _availableConversions = ConversionSelector.GetAllowedConversions(_format);
-                        ConvertToComboBox.Items.Clear();
-                        foreach (ImageFormat _row in _availableConversions)
-                        {
-                            ConvertToComboBox.Items.Add(_row);
-                        }
-                        inputFilePath = _filePath;
-                    }
-                    else
-                    {
-                        Debug.WriteLine("Unknown file type"); //  Debug
-                    }
+                    string _file = _files[0];
+                    ConversionProcessor.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
                 }
+            }
+        }
+
+        // Drag & Drop area clicked
+        private void DragDropArea_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            inputFilePath = null; // Reset input file path
+
+            OpenFileDialog _fileDialog = new OpenFileDialog();
+            bool? _isFileSelected = _fileDialog.ShowDialog();
+
+            if (_isFileSelected == true)
+            {
+                string _file = _fileDialog.FileName;
+                ConversionProcessor.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
+            }
+            else
+            {
+                // No file selected (null || false)
+                Debug.WriteLine("No file selected"); // Debug
             }
         }
 
@@ -81,7 +78,8 @@ namespace type_converter
         {
             if (inputFilePath == null || ConvertToComboBox.SelectedItem == null)
             {
-                Debug.WriteLine("File or selection is null"); // Debug
+                // Debug.WriteLine("File or selection is null"); // Debug
+                MessageBox.Show("Select file to convert.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

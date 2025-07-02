@@ -52,5 +52,21 @@ namespace type_converter
 
             return new List<ImageFormat>();
         }
+
+        // Format parser
+        public static ImageFormat ParseFormat(string _format)
+        {
+            return _format.ToLower() switch
+            {
+                // Image
+                ".png" => ImageFormat.PNG,
+                ".jpg" or ".jpeg" => ImageFormat.JPG,
+                ".webp" => ImageFormat.WEBP,
+                // Document
+                ".pdf" => ImageFormat.PDF,
+                ".docx" => ImageFormat.DOCX,
+                _ => ImageFormat.Unknown
+            };
+        }
     }
 }
