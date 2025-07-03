@@ -58,12 +58,12 @@ namespace type_converter
         {
             inputFilePath = null; // Reset input file path
 
-            OpenFileDialog _fileDialog = new OpenFileDialog();
-            bool? _isFileSelected = _fileDialog.ShowDialog();
+            OpenFileDialog _openFileDialog = new OpenFileDialog();
+            bool? _isFileSelected = _openFileDialog.ShowDialog();
 
             if (_isFileSelected == true)
             {
-                string _file = _fileDialog.FileName;
+                string _file = _openFileDialog.FileName;
                 ConversionProcessor.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
             }
             else
@@ -76,6 +76,7 @@ namespace type_converter
         // Convert button
         private void ConvertButton_Click(object sender, RoutedEventArgs e)
         {
+            // Check if all selected
             if (inputFilePath == null || ConvertToComboBox.SelectedItem == null)
             {
                 // Debug.WriteLine("File or selection is null"); // Debug
@@ -85,9 +86,37 @@ namespace type_converter
 
             ImageFormat _targetFormat = (ImageFormat)ConvertToComboBox.SelectedItem;
 
-            string _outputFilePath = System.IO.Path.ChangeExtension(inputFilePath, _targetFormat.ToString().ToLower());
+            string _outputFilePath;
 
+            // Save file dialog
+            SaveFileDialog _saveFileDialog = new SaveFileDialog
+            {
+                Title = "Save Converted File",
+                FileName = Path.GetFileNameWithoutExtension(inputFilePath) + "." + _targetFormat.ToString().ToLower(),
+                Filter = $"{_targetFormat} files|*.{_targetFormat.ToString().ToLower()}",
+                DefaultExt = _targetFormat.ToString().ToLower(),
+                InitialDirectory = inputFilePath
+            };
+
+            // Show save file dialog
+            bool? _isPathSelected = _saveFileDialog.ShowDialog();
+            if (_isPathSelected == true)
+            {
+                _outputFilePath = _saveFileDialog.FileName;
+                _outputFilePath = Path.ChangeExtension(_outputFilePath, _targetFormat.ToString().ToLower());
+            }
+            else
+            {
+                Debug.WriteLine("Save dialog was cancelled"); // Debug
+                return;
+            }
+
+            // Pass to converter
             FFmpeg.Convert(inputFilePath, _outputFilePath);
+
+            // Reset input
+            inputFilePath = null; // Reset input file path
+            ConvertToComboBox.Items.Clear();
         }
 
 

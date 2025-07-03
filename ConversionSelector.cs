@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace type_converter
         ICO
         // Document
         // Tables
+        // Video
     }
 
     // Creates conversion table
@@ -38,6 +40,7 @@ namespace type_converter
                 { ImageFormat.ICO, new  List<ImageFormat>{ImageFormat.PNG, ImageFormat.JPG, ImageFormat.WEBP} },
                 // Document
                 // Tables
+                // Video
             };
         }
         
@@ -65,6 +68,7 @@ namespace type_converter
                 ".ico" => ImageFormat.ICO,
                 // Document
                 // Tables
+                // Video
                 _ => ImageFormat.Unknown
             };
         }
