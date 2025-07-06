@@ -1,43 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+using ImageMagick;
 
 namespace type_converter
 {
-    class ConversionProcessor
+    public class ConversionProcessor
     {
-        public static void ProcessConversion(string _file, ComboBox ConvertToComboBox, out string inputFilePath)
+        public static void Convert(string inputPath, string outputPath)
         {
-            inputFilePath = null;
-
-            string _filePath = _file;
-            string _fileType = Path.GetExtension(_file).ToLower();
-
-            var _format = ConversionSelector.ParseFormat(_fileType);
-
-            if (_format != ImageFormat.Unknown)
+            using (MagickImage image = new MagickImage(inputPath))
             {
-                List<ImageFormat> _availableConversions = ConversionSelector.GetAllowedConversions(_format);
-                ConvertToComboBox.Items.Clear();
-                foreach (ImageFormat _row in _availableConversions)
+                var extension = Path.GetExtension(outputPath).ToLower();
+
+                // Tested only PNG -> ICO
+                if (extension == ".ico")
                 {
-                    ConvertToComboBox.Items.Add(_row);
-                }
+                    using (var collection = new MagickImageCollection())
+                    {
+                        uint[] sizes = { 256, 64, 32, 16 };
 
-                inputFilePath = _filePath;
-            }
-            else
-            {
-                // Debug.WriteLine("Unknown file type");
-                MessageBox.Show("Unknown file type.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        foreach (uint size in sizes)
+                        {
+                            var _iconImage = image.Clone();
+
+                            _iconImage.BackgroundColor = MagickColors.Transparent;
+
+                            _iconImage.FilterType = FilterType.Lanczos;
+
+                            _iconImage.Resize(size, size);
+
+                            _iconImage.Format = MagickFormat.Ico;
+
+                            collection.Add(_iconImage);
+                        }
+
+                        collection.Write(outputPath);
+                    }
+                }
+                else
+                {
+                    image.Write(outputPath);
+                }
             }
         }
     }
 }
+/* I thought I was testing this code and was like "That's so much simpler than FFmpeg" and then realized,
+   I didn't actually change call in ConvertButton_Click, so it is untested, eventually. I hope Natans tests it... */

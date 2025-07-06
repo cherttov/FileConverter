@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "XLR0EhI6mpw=",
+  "dgSpecHash": "ggCUr0Ps2NY=",
   "success": true,
   "projectFilePath": "C:\\Users\\Tymofii Chertov\\Nevim\\Programming\\csharp\\type_converter\\type_converter.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Tymofii Chertov\\.nuget\\packages\\magick.net-q16-anycpu\\14.6.0\\magick.net-q16-anycpu.14.6.0.nupkg.sha512",
+    "C:\\Users\\Tymofii Chertov\\.nuget\\packages\\magick.net.core\\14.6.0\\magick.net.core.14.6.0.nupkg.sha512"
+  ],
   "logs": []
 }

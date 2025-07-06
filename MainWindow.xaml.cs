@@ -48,7 +48,7 @@ namespace type_converter
                 else
                 {
                     string _file = _files[0];
-                    ConversionProcessor.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
+                    ConversionManager.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace type_converter
             if (_isFileSelected == true)
             {
                 string _file = _openFileDialog.FileName;
-                ConversionProcessor.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
+                ConversionManager.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
             }
             else
             {
