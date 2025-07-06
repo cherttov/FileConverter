@@ -112,7 +112,7 @@ namespace type_converter
             }
 
             // Pass to converter
-            FFmpeg.Convert(inputFilePath, _outputFilePath);
+            ConversionProcessor.Convert(inputFilePath, _outputFilePath);
 
             // Reset input
             inputFilePath = null; // Reset input file path
