@@ -5,5 +5,5 @@
 ---
 
 ## Credits ##
-- This project uses [FFmpeg](https://ffmpeg.org) to handle file conversion by running `ffmpeg.exe` in the background.
+- This project uses [ImageMagick](https://imagemagick.org) with the [Magick.NET](https://github.com/dlemstra/Magick.NET/tree/main) library to handle all image file conversions.
 - The colour theme used in this project is a modified [Catppuccin Mocha](https://catppuccin.com/palette/)
