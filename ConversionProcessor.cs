@@ -19,13 +19,14 @@ namespace type_converter
                 // Tested only PNG -> ICO
                 if (extension == ".ico")
                 {
+                    // Doesn't really work, I might look into it later
                     using (var collection = new MagickImageCollection())
                     {
-                        uint[] sizes = { 256, 64, 32, 16 };
+                        uint[] sizes = { 256, 64, 32, 16 }; // for some reason upscales/downscales everything to 64x64
 
-                        foreach (uint size in sizes)
+                        foreach (uint size in sizes) // maybe "floor" it to the nearest size, or actually give user a choice of size
                         {
-                            var _iconImage = image.Clone();
+                            var _iconImage = image.Clone(); // also fix resizing, ain't really working
 
                             _iconImage.BackgroundColor = MagickColors.Transparent;
 

@@ -1,18 +1,9 @@
 ﻿using Microsoft.Win32;
 using System.Diagnostics;
-using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using type_converter.src;
 using Path = System.IO.Path;
 
 namespace type_converter
@@ -85,6 +76,12 @@ namespace type_converter
             }
 
             ImageFormat _targetFormat = (ImageFormat)ConvertToComboBox.SelectedItem;
+
+            // check if conversion to .ico
+            if (_targetFormat == ImageFormat.ICO)
+            {
+                MessageBox.Show("Make sure that the original file has supported size for this conversion.", "Note", MessageBoxButton.OK);
+            }
 
             string _outputFilePath;
 

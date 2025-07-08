@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using WPFImage = System.Windows.Controls.Image;
-using Image = System.Drawing.Image;
-using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using type_converter.src;
 
 
 namespace type_converter
@@ -52,6 +41,10 @@ namespace type_converter
 
         private static void GetSetThumbnail(string filePath, WPFImage AreaImage, TextBlock Text, TextBlock DefText, bool isIco)
         {
+            BitmapImage _bitmap = new BitmapImage();
+
+            _bitmap.BeginInit();
+
             // Temporary fix for .ico files
             Uri _uri;
             if (isIco)
@@ -59,12 +52,22 @@ namespace type_converter
             else
                 _uri = new Uri(filePath, UriKind.Absolute);
 
-            BitmapImage _bitmap = new BitmapImage(_uri);
+            _bitmap.UriSource = _uri;
+
+            _bitmap.CacheOption = BitmapCacheOption.OnLoad; // So it doesn't lock the file
+
+            _bitmap.EndInit();
+
+            _bitmap.Freeze();
+
+            // Set image
             AreaImage.Source = _bitmap;
             AreaImage.Visibility = Visibility.Visible;
 
+            // Hide default text
             DefText.Visibility = Visibility.Collapsed;
 
+            // Set new text
             Text.Text = Path.GetFileName(filePath);
             Text.Visibility = Visibility.Visible;
         }
