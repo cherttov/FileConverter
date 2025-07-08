@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v9.0": {
       "type_converter/1.0.0": {
         "dependencies": {
-          "Magick.NET-Q16-AnyCPU": "14.6.0"
+          "Magick.NET-Q16-AnyCPU": "14.6.0",
+          "System.Drawing.Common": "9.0.6"
         },
         "runtime": {
           "type_converter.dll": {}
@@ -74,6 +75,37 @@
             "fileVersion": "14.6.0.0"
           }
         }
+      },
+      "Microsoft.Win32.SystemEvents/9.0.6": {
+        "runtime": {
+          "lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26613"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26613"
+          }
+        }
+      },
+      "System.Drawing.Common/9.0.6": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "9.0.6"
+        },
+        "runtime": {
+          "lib/net9.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26605"
+          },
+          "lib/net9.0/System.Private.Windows.Core.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26605"
+          }
+        }
       }
     }
   },
@@ -96,6 +128,20 @@
       "sha512": "sha512-hyXMoLiq6iHooL54iTYzKtiWOAQOiwrwVMeoglGifwYAduAzVfeG+/BxgIz1SaxfczBfQFlcWKTrRU0RNBucUw==",
       "path": "magick.net.core/14.6.0",
       "hashPath": "magick.net.core.14.6.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/9.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mUa3Chovao0xQ74j2hUN5kDTn3luY/1e9usJYT0r51cgqfQsgQu5C8Cis9h65SNRbkbBwErfXKlBtHCkMiYa/g==",
+      "path": "microsoft.win32.systemevents/9.0.6",
+      "hashPath": "microsoft.win32.systemevents.9.0.6.nupkg.sha512"
+    },
+    "System.Drawing.Common/9.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KpPB6e7PYCalslhmq/dVa2tJgCcfUDhEK83j1Eix+BmEcNPP00JJBvFrBT7jGcHLmQzsIA4AthwNFkk+cD3RKA==",
+      "path": "system.drawing.common/9.0.6",
+      "hashPath": "system.drawing.common.9.0.6.nupkg.sha512"
     }
   }
 }

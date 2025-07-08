@@ -34,7 +34,7 @@ namespace type_converter
         // Drag & Drop area dropped
         private void DragDropArea_Drop(object sender, DragEventArgs e)
         {
-            inputFilePath = null; // Reset input file path
+            Reset(); // Reset input
 
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -48,7 +48,7 @@ namespace type_converter
                 else
                 {
                     string _file = _files[0];
-                    ConversionManager.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
+                    ConversionManager.ProcessConversion(_file, ConvertToComboBox, DragDropArea_Image, DragDropArea_ImageText, DragDropArea_Text, out inputFilePath);
                 }
             }
         }
@@ -56,7 +56,7 @@ namespace type_converter
         // Drag & Drop area clicked
         private void DragDropArea_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            inputFilePath = null; // Reset input file path
+            Reset(); // Reset input
 
             OpenFileDialog _openFileDialog = new OpenFileDialog();
             bool? _isFileSelected = _openFileDialog.ShowDialog();
@@ -64,7 +64,7 @@ namespace type_converter
             if (_isFileSelected == true)
             {
                 string _file = _openFileDialog.FileName;
-                ConversionManager.ProcessConversion(_file, ConvertToComboBox, out inputFilePath);
+                ConversionManager.ProcessConversion(_file, ConvertToComboBox, DragDropArea_Image, DragDropArea_ImageText, DragDropArea_Text, out inputFilePath);
             }
             else
             {
@@ -115,8 +115,7 @@ namespace type_converter
             ConversionProcessor.Convert(inputFilePath, _outputFilePath);
 
             // Reset input
-            inputFilePath = null; // Reset input file path
-            ConvertToComboBox.Items.Clear();
+            Reset();
         }
 
 
@@ -136,6 +135,18 @@ namespace type_converter
                 border.ClearValue(Border.BorderBrushProperty);
                 border.ClearValue(Border.BackgroundProperty);
             }
+        }
+
+        // Reset input
+        private void Reset()
+        {
+            inputFilePath = null;
+            ConvertToComboBox.Items.Clear();
+            DragDropArea_Image.Source = null;
+            DragDropArea_Image.Visibility = Visibility.Collapsed;
+            DragDropArea_ImageText.Text = "";
+            DragDropArea_ImageText.Visibility = Visibility.Collapsed;
+            DragDropArea_Text.Visibility = Visibility.Visible;
         }
 
     }

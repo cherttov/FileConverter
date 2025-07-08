@@ -367,8 +367,16 @@
                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AllowDrop="True"
                 Drop="DragDropArea_Drop" Style="{StaticResource DragDropBorderStyle}" MouseLeftButtonDown="DragDropArea_MouseDown"
                 DragEnter="DragDropArea_DragEnter" DragLeave="DragDropArea_DragLeave">
-            <TextBlock Text="Drop your file here..." VerticalAlignment="Center" HorizontalAlignment="Center" 
-                       FontSize="20" FontFamily="Cascadia Mono" Foreground="#FFCDD6F4"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image x:Name="DragDropArea_Image" 
+                       Width="168" Height="96" Visibility="Collapsed" Stretch="UniformToFill"/>
+                <TextBlock x:Name="DragDropArea_Text"
+                           Text="Drop your file here..." VerticalAlignment="Center" HorizontalAlignment="Center" 
+                           FontSize="20" FontFamily="Cascadia Mono" Foreground="#FFCDD6F4" Visibility="Visible"/>
+                <TextBlock x:Name="DragDropArea_ImageText"
+                           Text="" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                           FontSize="14" FontFamily="Cascadia Mono" Foreground="#FFCDD6F4" Visibility="Collapsed"/>
+            </StackPanel>
         </Border>
 
         <!-- Bottom Grid -->
